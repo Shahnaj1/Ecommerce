@@ -7,10 +7,15 @@ const router = require('./routes')
 
 
 const app = express()
-app.use(cors({
-    origin : process.env.FRONTEND_URL,
-    credentials : true
-}))
+app.use(
+    cors({
+      origin: process.env.FRONTEND_URL,
+      allowedHeaders: "Content-Type, Authorization",
+      exposedHeaders: "Set-Cookie",
+      methods: "GET, POST, PUT, DELETE",
+      credentials: true,
+    })
+  );
 app.use(express.json())
 app.use(cookieParser())
 
